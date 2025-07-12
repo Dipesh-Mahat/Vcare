@@ -1,147 +1,214 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>BMI Calculator</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" href="/CSS/bmi.css">
-    </head>
-    <body>
-        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Vcare</title>
+    <link rel="icon" href="/Images/Logo.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/bmi.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <div class="glassmorphic-box">
-                <nav class="navbar navbar-expand-lg bg-body-none">
-                    <div class="container">
-                        <a class="navbar-brand" href="#">
-                            <img src="/Images/Logo.png" alt="Logo" width="100" height="100" class="d-inline-block align-text-top">
-                        </a>
-                        <h2>Vcare</h2>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active fs-3" aria-current="page" href="/HTML/index.html">Home</a>
-                                </li>        
-                                <li class="nav-item">
-                                    <a class="nav-link active fs-3" aria-current="page" href="/HTML/login.html">Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active fs-3" aria-current="page" href="#">About</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                
-                <h1>Choose your Gender</h1><br>
-                <div class="d-flex image-container">
-                    <div class="col-3 d-flex" id="female-container">
-                        <div class="left-side" id="female-data-fill" style="display: none;">
-                            <div class="input-group mb-2">
-                                <input type="number" class="form-control" id="female-weight" placeholder="Enter weight in kg">
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="number" class="form-control" id="female-height" placeholder="Enter height in cm">
-                            </div>
-                            <button type="button" class="btn btn-dark" id="female-calculate-bmi">Calculate BMI</button>
-                        </div>
-                        <img src="/Images/female.png" alt="Female" id="female-image">
-                        <span class="gender-label" id="female-label">Female</span>
-                    </div>
-                    
-                    <div class="col-5 d-flex" id="male-container">
-                        <img src="/Images/male.png" alt="Male" id="male-image">
-                        <span class="gender-label" id="male-label">Male</span>
-                        <div class="right-side" id="male-data-fill" style="display: none;">
-                            <div class="input-group mb-2">
-                                <input type="number" class="form-control" id="male-weight" placeholder="Enter weight in kg">
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="number" class="form-control" id="male-height" placeholder="Enter height in cm">
-                            </div>
-                            <button type="button" class="btn btn-dark" id="male-calculate-bmi">Calculate BMI</button>
-                        </div>
-                    </div>
-                </div><br><br><br>
-
-
-
-   <div class="d-flex justify-content-between bottom">         
-<div class="Categories">
-    <ul style="list-style-type: none;">
-        <h2>BMI Categories:</h2>
-        <li>Underweight =  18.5 </li>
-        <li>Normal weight = 18.5 - 24.9 </li>
-        <li>Overweight = 25 - 29.9 </li>
-        <li>Obesity = > 30 </li>
-    </ul>
-</div>
-   
-<div class="bmiMeter">
-          <div id="guage">
-            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve"  version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-            viewBox="0 0 3486.3 3486.3"
-             xmlns:xlink="http://www.w3.org/1999/xlink">
-             <defs>
-              <style type="text/css">
-               .fil1 { fill: none; }
-               .fil0 { fill: url(#id0); }
-              </style>
-              <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="-3.41" y1="1744.6" x2="3550.74" y2="1744.59">
-               <stop offset="0.1" style="stop-opacity:1; stop-color:red"/>
-               <stop offset="0.18" style="stop-opacity:1; stop-color:lime"/>
-               <stop offset="0.4" style="stop-opacity:1; stop-color:#FFE600"/>
-               <stop offset="0.8" style="stop-opacity:1; stop-color:red"/>
-              </linearGradient>
-             </defs>
-             <g id="Layer_x0020_1">
-              <metadata id="CorelCorpID_0Corel-Layer"/>
-              <path class="fil0" d="M1761.22 0c134.46,1.5 265.26,18.17 390.78,48.44l-64.38 240.28c-104.96,-24.86 -214.18,-38.66 -326.4,-40.11l0 -248.6zm429.14 58.17c129.18,34.3 252.46,83.03 368.03,144.39l-124.4 215.47c-96.9,-50.69 -200.05,-91.06 -307.98,-119.68l64.35 -240.17zm402.78 163.34c116.57,65.32 224.89,143.62 322.97,232.97l-176.02 176.02c-82.65,-74.14 -173.61,-139.18 -271.29,-193.62l124.34 -215.36zm351.94 259.96c97.2,92.64 183.71,196.4 257.52,309.22l-215.76 124.57c-62.73,-94.02 -135.8,-180.55 -217.62,-257.92l175.87 -175.87zm278.84 342.6c71.4,114.75 129.84,238.41 173.3,368.91l-240.79 64.52c-37.61,-109.27 -87.47,-212.84 -148.02,-309.01l215.51 -124.42zm185.36 406.65c39.92,129.74 65.06,265.94 73.6,406.63l-249.2 0c-8.39,-118.4 -30.46,-233.01 -64.81,-342.21l240.41 -64.42zm-1687.63 -982.11c-112.21,1.47 -221.45,15.23 -326.4,40.12l-64.38 -240.28c125.5,-30.3 256.32,-46.94 390.78,-48.44l0 248.6zm-364.79 49.74c-107.93,28.64 -211.08,68.99 -307.98,119.69l-124.4 -215.47c115.56,-61.37 238.86,-110.07 368.03,-144.39l64.35 240.17zm-342.79 138.53c-97.67,54.45 -188.65,119.48 -271.29,193.62l-176.01 -176.01c98.07,-89.36 206.41,-167.63 322.97,-232.97l124.34 215.36zm-300.41 220.47c-81.81,77.38 -154.9,163.9 -217.62,257.92l-215.76 -124.57c73.8,-112.82 160.32,-216.56 257.51,-309.22l175.87 175.87zm-239.19 291.16c-60.54,96.17 -110.42,199.74 -148.02,309.01l-240.79 -64.52c43.45,-130.51 101.9,-254.16 173.3,-368.92l215.51 124.42zm-160.46 346.64c-34.34,109.2 -56.42,223.81 -64.81,342.21l-249.2 0c8.54,-140.69 33.68,-276.89 73.6,-406.63l240.41 64.42z"/>
-              <circle class="fil1" cx="1743.15" cy="1743.15" r="1743.15"/>
-              <circle class="fil1" cx="1743.15" cy="1743.15" r="1498.86"/>
-             </g>-
-            </svg>
-            <div id="spinner">
-              <div id="pointer"></div>
+            <a class="navbar-brand" href="/HTML/index.html">
+                <img src="/Images/Logo.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
+            </a>
+            <h2 class="brand-text">Vcare</h2>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/Service.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/About.html">About</a>
+                    </li>
+                </ul>
             </div>
-            <h2 class="value">BMI</h2>
-            <p class="small-text">status</p>
-          </div>
-</div>
-
-<div id="female-bmi-result" class="bmi-result" style="display: none;">
-    <h1 class="value" style="display: none;">BMI</h1>
-    <p class="small-text" style="display: none;">status</p>
-</div>
-
-<div id="male-bmi-result" class="bmi-result" style="display: none;">
-    <h1 class="value" style="display: none;">BMI</h1>
-    <p class="small-text" style="display: none;">status</p>
-</div>
-
-<div class="FAQ">
-            <ul style="list-style-type: none;">
-                <h2>FAQ</h2>
-                <li class="faq-question" onclick="toggleAnswer(1)" onmouseover="expandQuestion(this)" onmouseout="shrinkQuestion(this)">1. What is BMI?</li>
-                <li class="faq-question" onclick="toggleAnswer(2)" onmouseover="expandQuestion(this)" onmouseout="shrinkQuestion(this)">2. What are BMI categories?</li>
-                <li class="faq-question" onclick="toggleAnswer(3)" onmouseover="expandQuestion(this)" onmouseout="shrinkQuestion(this)">3. How accurate is BMI?</li>
-                <li class="faq-question" onclick="toggleAnswer(4)" onmouseover="expandQuestion(this)" onmouseout="shrinkQuestion(this)">4. How to improve BMI?</li>
-            </ul>
-            <div class="faq-answers">
-                <div class="faq-answer" id="answer1">1. BMI stands for Body Mass Index, a measure used to assess body weight relative to height.</div>
-                <div class="faq-answer" id="answer2">2. BMI categories classify individuals into groups based on their BMI values, such as underweight, normal weight, overweight, and obesity.</div>
-                <div class="faq-answer" id="answer3">3. BMI provides a general indication of body weight status but may not account for individual variations in body composition, such as muscle mass.</div>
-                <div class="faq-answer" id="answer4">4. Improving BMI involves adopting a balanced diet, engaging in regular physical activity, and maintaining healthy lifestyle habits.</div>
-            </div>
-</div> 
         </div>
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
-        crossorigin="anonymous"></script>
-        <script src="/Js/bmi.js"></script>
-    </body>
-    </html>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="bmi-calculator-container">
+                    <!-- Header -->
+                    <div class="text-center mb-5">
+                        <h1 class="bmi-title">BMI Calculator</h1>
+                        <p class="bmi-subtitle">Calculate your Body Mass Index to assess your health status</p>
+                    </div>
+
+                    <!-- BMI Calculator Form -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="calculator-form">
+                                <h3 class="form-title">Enter Your Details</h3>
+                                
+                                <!-- Gender Selection -->
+                                <div class="gender-selection mb-4">
+                                    <label class="form-label">Select Gender</label>
+                                    <div class="gender-options">
+                                        <input type="radio" class="btn-check" name="gender" id="male" value="male" autocomplete="off">
+                                        <label class="btn btn-outline-primary gender-btn" for="male">
+                                            <img src="/Images/male.png" alt="Male" class="gender-icon">
+                                            Male
+                                        </label>
+
+                                        <input type="radio" class="btn-check" name="gender" id="female" value="female" autocomplete="off">
+                                        <label class="btn btn-outline-primary gender-btn" for="female">
+                                            <img src="/Images/female.png" alt="Female" class="gender-icon">
+                                            Female
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Weight Input -->
+                                <div class="mb-4">
+                                    <label for="weight" class="form-label">Weight (kg)</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="weight" placeholder="Enter your weight" min="1" max="500" step="0.1">
+                                        <span class="input-group-text">kg</span>
+                                    </div>
+                                </div>
+
+                                <!-- Height Input -->
+                                <div class="mb-4">
+                                    <label for="height" class="form-label">Height (cm)</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="height" placeholder="Enter your height" min="1" max="300" step="0.1">
+                                        <span class="input-group-text">cm</span>
+                                    </div>
+                                </div>
+
+                                <!-- Calculate Button -->
+                                <button type="button" class="btn btn-primary btn-calculate w-100" id="calculate-bmi">
+                                    <span class="calculate-text">Calculate BMI</span>
+                                    <div class="spinner-border spinner-border-sm d-none" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <!-- BMI Result -->
+                            <div class="bmi-result-container">
+                                <div class="bmi-gauge-container">
+                                    <div class="bmi-gauge" id="bmi-gauge">
+                                        <svg viewBox="0 0 200 100">
+                                            <!-- Background arc -->
+                                            <path d="M 20 80 A 60 60 0 0 1 180 80" stroke="#e9ecef" stroke-width="10" fill="none"/>
+                                            <!-- Colored segments -->
+                                            <path d="M 20 80 A 60 60 0 0 0 60 25" stroke="#ffc107" stroke-width="10" fill="none"/>
+                                            <path d="M 60 25 A 60 60 0 0 0 120 20" stroke="#28a745" stroke-width="10" fill="none"/>
+                                            <path d="M 120 20 A 60 60 0 0 0 160 45" stroke="#fd7e14" stroke-width="10" fill="none"/>
+                                            <path d="M 160 45 A 60 60 0 0 0 180 80" stroke="#dc3545" stroke-width="10" fill="none"/>
+                                            <!-- Pointer -->
+                                            <line x1="100" y1="80" x2="100" y2="30" stroke="#333" stroke-width="3" id="bmi-pointer" transform="rotate(-90 100 80)"/>
+                                            <circle cx="100" cy="80" r="5" fill="#333"/>
+                                        </svg>
+                                    </div>
+                                    
+                                    <div class="bmi-value-display text-center">
+                                        <div class="bmi-value" id="bmi-value">--</div>
+                                        <div class="bmi-category" id="bmi-category">Enter your details</div>
+                                    </div>
+                                </div>
+
+                                <!-- BMI Categories -->
+                                <div class="bmi-categories mt-4">
+                                    <h5>BMI Categories</h5>
+                                    <div class="category-item">
+                                        <span class="category-color" style="background-color: #ffc107;"></span>
+                                        <span>Underweight: &lt; 18.5</span>
+                                    </div>
+                                    <div class="category-item">
+                                        <span class="category-color" style="background-color: #28a745;"></span>
+                                        <span>Normal: 18.5 - 24.9</span>
+                                    </div>
+                                    <div class="category-item">
+                                        <span class="category-color" style="background-color: #fd7e14;"></span>
+                                        <span>Overweight: 25 - 29.9</span>
+                                    </div>
+                                    <div class="category-item">
+                                        <span class="category-color" style="background-color: #dc3545;"></span>
+                                        <span>Obese: ≥ 30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Advice -->
+                    <div class="health-advice mt-5" id="health-advice" style="display: none;">
+                        <div class="advice-card">
+                            <h4>Health Recommendations</h4>
+                            <p id="advice-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="faq-section mt-5">
+                        <h3 class="text-center mb-4">Frequently Asked Questions</h3>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        What is BMI?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        BMI (Body Mass Index) is a measure used to assess body weight relative to height. It's calculated by dividing weight in kilograms by height in meters squared.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        How accurate is BMI?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        BMI provides a general indication of body weight status but may not account for individual variations in body composition, such as muscle mass, bone density, and fat distribution.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        How can I improve my BMI?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Improving BMI involves adopting a balanced diet, engaging in regular physical activity, getting adequate sleep, and maintaining healthy lifestyle habits. Consult with healthcare professionals for personalized advice.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/Js/bmi.js"></script>
+</body>
+</html>

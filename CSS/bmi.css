@@ -1,229 +1,582 @@
+/* BMI Calculator Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: linear-gradient(90deg,
-      #F0C0F2 40%,
-      #58D4F9 100%
-    );
-  }
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #e9ecef 100%);
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.brand-text {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+.nav-link {
+    color: #495057 !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
 
 .nav-link::after {
-    content: '';
+    content: "";
     width: 0%;
-    height: 2px;
-    background: #0000CD;
+    height: 3px;
+    background: linear-gradient(90deg, #007bff, #0056b3);
     display: block;
     margin: auto;
-    transition: 0.5s;
-  }
-  .nav-link:hover:after{
-    width: 100%;
-  }
+    transition: 0.3s ease;
+    border-radius: 3px;
+}
 
-  .container {
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+    transform: translateY(-2px);
+}
+
+/* Main Container */
+.bmi-calculator-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Headers */
+.bmi-title {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.bmi-subtitle {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.form-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+/* Calculator Form */
+.calculator-form {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 123, 255, 0.1);
+}
+
+.form-label {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Gender Selection */
+.gender-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.gender-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.gender-icon {
+    width: 40px;
+    height: 40px;
+    filter: opacity(0.7);
+    transition: all 0.3s ease;
+}
+
+.gender-btn:hover .gender-icon,
+.gender-btn.active .gender-icon {
+    filter: opacity(1);
+    transform: scale(1.1);
+}
+
+.btn-check:checked + .gender-btn {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border-color: #007bff;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+}
+
+/* Form Inputs */
+.form-control {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(0, 123, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 1);
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.input-group-text {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    font-weight: 600;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Calculate Button */
+.btn-calculate {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-calculate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
-  }
-  .image-container {
-    display: flex;
-    justify-content: right;
-    align-items: right;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-calculate:hover::before {
+    left: 100%;
+}
+
+.btn-calculate:hover {
+    background: linear-gradient(135deg, #1e7e34, #198754);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(40, 167, 69, 0.4);
+}
+
+/* BMI Result Container */
+.bmi-result-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    text-align: center;
+}
+
+/* BMI Gauge */
+.bmi-gauge-container {
+    margin-bottom: 30px;
+}
+
+.bmi-gauge {
+    width: 200px;
+    height: 100px;
+    margin: 0 auto 20px;
     position: relative;
-  }
-  .glassmorphic-box {
+}
+
+.bmi-gauge svg {
+    width: 100%;
+    height: 100%;
+}
+
+#bmi-pointer {
+    transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bmi-value-display {
+    margin-top: 20px;
+}
+
+.bmi-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.bmi-category {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+/* BMI Categories */
+.bmi-categories h5 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.category-item {
+    display: flex;
     align-items: center;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgba(255, 255, 255, 0.5);
+    gap: 10px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.category-item:hover {
+    background: rgba(0, 123, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.category-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Health Advice */
+.health-advice {
+    animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.advice-card {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(40, 167, 69, 0.1));
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 4px solid #007bff;
+}
+
+.advice-card h4 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.advice-card p {
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* FAQ Section */
+.faq-section h3 {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.accordion-item {
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.accordion-button {
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
+    font-weight: 600;
+    border: none;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(40, 167, 69, 0.1));
+    color: #007bff;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.accordion-body {
+    background: rgba(255, 255, 255, 0.95);
+    color: #495057;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bmi-calculator-container {
+        padding: 20px;
+        margin: 20px 10px;
+    }
+    
+    .calculator-form,
+    .bmi-result-container {
+        margin-bottom: 30px;
+    }
+    
+    .bmi-title {
+        font-size: 2rem;
+    }
+    
+    .gender-options {
+        flex-direction: column;
+    }
+    
+    .gender-btn {
+        min-width: 100%;
+    }
+    
+    .bmi-value {
+        font-size: 2.5rem;
+    }
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    z-index: 1000;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    max-width: 300px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+.notification.warning {
+    background: linear-gradient(135deg, #ffc107, #e0a800);
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Loading Animation */
+.btn-calculate.loading .calculate-text {
+    opacity: 0;
+}
+
+.btn-calculate.loading .spinner-border {
+    display: inline-block !important;
+}
+
+/* Error Styles */
+.error-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+/* Notification System */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    max-width: 350px;
+    z-index: 1000;
+    transform: translateX(400px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(10px);
-    border-radius: 40px;
-    padding: 0px 30px 30px 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-.image-container .col-3, .image-container .col-5 {
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* CSS for image containers */
-.col-3:hover #female-image {
-  transform: scale(1.1); /* Make female image bigger on hover */
-  opacity: 1; /* Increase opacity */
-  cursor: url('/Images/iCursorX.png'), auto;
+.notification.show {
+    transform: translateX(0);
 }
 
-.col-5:hover #male-image {
-  transform: scale(1.1); /* Make male image bigger on hover */
-  opacity: 1; /* Increase opacity */
-  cursor: url('/Images/iCursorX.png'), auto;
+.notification.success {
+    background: linear-gradient(135deg, #28a745, #20c997);
 }
 
-#female-image:hover + #female-label {
-  opacity: 1;
-  top: 50%;
-  left: 39%;
+.notification.error {
+    background: linear-gradient(135deg, #dc3545, #e83e5a);
 }
 
-#male-container:hover #male-label {
-  opacity: 1;
-  top: 50%;
-  right: 34%;
+.notification.info {
+    background: linear-gradient(135deg, #007bff, #17a2b8);
 }
 
-.gender-label {
-  position: absolute;
-  opacity: 0;
+.notification-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
 }
 
-/* Add styles to disable hover effect for gender-selected elements */
-.gender-selected:hover {
-  pointer-events: none;
+.notification-close:hover {
+    opacity: 1;
 }
 
-/* Hide the up and down arrows */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-moz-inner-spin-button,
-input[type="number"]::-moz-outer-spin-button {
-  -webkit-appearance: none; /* Chrome, Safari */
-  -moz-appearance: none; /* Firefox */
-  appearance: none; /* Standard */
+/* Loading Animation */
+.btn.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
 }
 
-
-.left-side {
-  width: 350px;
-  float: left;
-  align-items: center;
-  margin-left: -400px; /* Adjust this value to move the data fill section more to the left */
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
-.right-side {
-  width: 350px;
-  float: right;
-  margin-right: -400px;
-  margin-left: 150px;
-
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.input-group {
-  width: 50%;
-  margin-bottom: 10px; /* Add margin between input fields */
+/* Enhanced Form Animations */
+.form-control:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
 }
 
-/* Apply transition for smooth color change */
-.btn {
-  font-size: 20px;
-  font-family: monospace;
+.input-group:hover {
+    transform: translateY(-1px);
 }
 
-/* Apply animation for glowing effect */
-#female-calculate-bmi:hover{
-  color: #F0C0F2;
-  border-color: transparent;
-}
-#male-calculate-bmi:hover{
-  color: #58D4F9;
-  border-color: transparent;
-}
-
-#form-control{
-  margin: 5px;
+/* Health Advice Container */
+#health-advice {
+    background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+    border-left: 4px solid #007bff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: none;
 }
 
-.Categories{
-  padding: 4px;
-  background-color: whitesmoke;
-  border-radius: 20px;
-  width: 300px;
-  height: 200px;
+#health-advice.show {
+    opacity: 1;
 }
 
-.bmi-meter {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+/* Smooth Transitions for Interactive Elements */
+button:active {
+    transform: scale(0.98);
 }
 
-.FAQ{
-  padding: 4px;
-  background-color: whitesmoke;
-  border-radius: 20px;
-  width: 300px;
-  height: auto;
-}
-
-/* Add your CSS styles here */
-.faq-question {
-  cursor: pointer;
-  transition: font-size 0.3s ease-in-out; /* Add transition effect */
-  
-}
-
-.faq-answer {
-  display: none;
-}
-
-.faq-question:hover {
-  font-size: 20px;
-
-}
-
-
-/* Style the meter */
-#guage {
-  position: relative;
-  margin: auto;
-  margin-bottom: -150px;
-  border-radius: 100%;
-  width: 300px;
-  height: 300px;
-  max-width: 300px;
-  max-height: 300px;
-}
-#guage svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-#guage .value {
-  font-size: 20px;
-  position: relative;
-  top: 100px;
-  text-align: center;
-}
-
-#spinner {
-  width: 250px;
-  height: 250px;
-  border-radius: 100%;
-  position: absolute;
-  top: 25px;
-  left: 25px;
-  transition: transform 1.5s ease-in-out;
-  transform: rotate(45deg);
-}
-
-#pointer {
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
-  border-right: 12px solid rgb(0, 0, 0);
-  position: absolute;
-  z-index: 20;
-  top: 105px;
-  left: 5px;
-  width: 0px;
-}
-
-#guage .small-text {
-  font-size: 14px;
-  position: relative;
-  text-align: center;
-  top: 95px;
-}
-
-.bmi-result {
-  position: absolute; /* Position the result container absolutely */
-  top: 0; /* Position from the top of the nearest positioned ancestor */
-  left: 0; /* Position from the left of the nearest positioned ancestor */
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
